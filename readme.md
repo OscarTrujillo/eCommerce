@@ -102,11 +102,17 @@ Ya tenemos nuestro entorno preparado para recibir a Magento y tenemos a Magento 
 Durante la instalación tan solo deberemos de configurar los parámetros vistos anteriormente de la base de datos para que se pueda conectar con ella. Tambien deberemos crearnos una cuenta de administrador y elegir idioma y país de origen.
 
 ![][1]
+##### Paso 1:
 ![][2]
+##### Paso 2:
 ![][3]
+##### Paso 3:
 ![][4]
+##### Paso 4:
 ![][5]
+##### Paso 5:
 ![][6]
+##### Paso 6:
 ![][7]
 
 [1]: images/c3.png
@@ -117,6 +123,7 @@ Durante la instalación tan solo deberemos de configurar los parámetros vistos 
 [6]: images/c6.png
 [7]: images/c8.png
 
+##### Listo!
 Una vez configurado esto tendremos lista nuestra plataforma!
 
 ![](images/c9.png)
