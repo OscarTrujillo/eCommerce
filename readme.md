@@ -85,6 +85,8 @@ En este tutorial se usará la version 2.0.0. Recién sacada al mercado.
 
 Para descargar magento recomiento hacerlo desde la [página web oficial](https://www.magentocommerce.com/download "página web oficial"). Para el tutorial he usado concretamente la versión "Full Release (ZIP with no sample data)". Una vez descargado el paquéte procederemos a descomprimirlo y a moverlo a la dirección `/var/www/html/` donde previamente hemos configurado Apache:
 
+![](images/c11.png)
+
         tar xzvf magento-2.0.0.tar.gz
         sudo rsync -avP ~/magento/. /var/www/html/
         rm -rf ~/magento*
@@ -99,7 +101,25 @@ Ya tenemos nuestro entorno preparado para recibir a Magento y tenemos a Magento 
             http://localhost/
 Durante la instalación tan solo deberemos de configurar los parámetros vistos anteriormente de la base de datos para que se pueda conectar con ella. Tambien deberemos crearnos una cuenta de administrador y elegir idioma y país de origen.
 
+![][1]
+![][2]
+![][3]
+![][4]
+![][5]
+![][6]
+![][7]
+
+[1]: images/c3.png
+[2]: images/c1.png
+[3]: images/c2.png
+[4]: images/c4.png
+[5]: images/c5.png
+[6]: images/c6.png
+[7]: images/c8.png
+
 Una vez configurado esto tendremos lista nuestra plataforma!
+
+![](images/c9.png)
 
 ### 4. Ejemplos de uso.
 
