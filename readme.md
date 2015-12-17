@@ -130,7 +130,50 @@ Una vez configurado esto tendremos lista nuestra plataforma!
 
 ### 4. Ejemplos de uso.
 
+1. Añadiendo productos:
+
+
+Para añadir nuevos productos debemos dirigirnos en la interfaz a PRODUCTS -> Catalog. Aquí seleccionaremos: Add Product.
+
+![](images/c13.png)
+
+Atención! Es muy importante cuando estemos agregandole características a nuestro producto asignarle una categoría ya que es la forma que tiene Magento de mostrar dicho producto. Si queremos que salga en nuestra página tambien deberemos de indicar que lo tenemos en stock.
+   
+   
+![](images/c14.png)
+
+
+2. Manejar categorías:
+
+Las categorías en Magento sirven para agrupar productos de igual característica y poder de esta manera mostrarlos en la web.
+Para añadir o modificar categorías debemos de ir a PRODUCTS -> Categories. 
+
+![](images/c12.png)
+
+
+3. Cambiar tema:
+
+El estilo de nuestra página es totalmente modificable, no obstante existe la posibilidad de adaptar temas predefinidos por la comunidad:
+
 
 ### 5. Problemas resueltos.
 * ¿Problemas para atentificarte como admin?
+ 
     : Aconsejo no usar chrome como navegador al trabajar con Magento si lo hemos instalado en nuestro localhost. resulta que da problemas de autenticación debido a que detecta localhost como insegura y corta las peticiones que manda Magento.
+
+* Error de caché:
+
+![](images/c15.png)
+
+    : Este aviso significa que la caché necesita ser refrescada por algún cambio que hayamos hecho.
+Es tan simple de solucionar como ir a SYSTEM-> Cache Management. Seleccionar el tipo de caché afectada y refrescarla.
+
+![](images/c16.png)
+
+* No se cargan los productos en mi página principal!
+
+    : Este fallo puede deberse a un fallo en los índices de Magento. Se soluciona con ejecutar lo siguiente desde la raiz de nuestro proyecto magento:
+
+            sudo php bin/magento indexer:reindex
+
+        
