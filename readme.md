@@ -30,11 +30,11 @@ En este tutorial se usará la version 2.0.0. Recién sacada al mercado.
 
 ##### 2.1 Prepara el entorno.
 * Apache:
-    : Necesitamos configurar Apache para que pueda manejar Magento correctamente. Crearemos un nuevo archivo de configuración en la ruta `/etc/apache2/sites-available/`. En nuestro caso lo llamaremos: `magento`:
+    Necesitamos configurar Apache para que pueda manejar Magento correctamente. Crearemos un nuevo archivo de configuración en la ruta `/etc/apache2/sites-available/`. En nuestro caso lo llamaremos: `magento`:
 
             sudo nano /etc/apache2/sites-available/magento.conf
     
-	: En este archivo deberemos escribir lo siguiente:
+	En este archivo deberemos escribir lo siguiente:
 	
         	<VirtualHost *:80>
             DocumentRoot /var/www/html
@@ -44,38 +44,38 @@ En este tutorial se usará la version 2.0.0. Recién sacada al mercado.
             </Directory>
             </VirtualHost>
             
-    : Guardamos el archivo y a continuación, primero deshabilitaremos la configuración que viene por defecto con Apache y después habilitaremos la nueva configuración que acabamos de definir:
+    Guardamos el archivo y a continuación, primero deshabilitaremos la configuración que viene por defecto con Apache y después habilitaremos la nueva configuración que acabamos de definir:
     
             sudo a2dissite 000-default.conf
             sudo a2ensite magento.conf
 
 *  PHP
-    : Necesitamos tener PHP instalado en nuestra máquina. Además se hace necesario instalar los módulos PHP `php5-curl php5-gd php5-mcrypt`. Estas extensiones permiten a Magento manejar adecuadamente las peticiones HTTP, las imágenes en miniatura, y el cifrado de datos:
+    Necesitamos tener PHP instalado en nuestra máquina. Además se hace necesario instalar los módulos PHP `php5-curl php5-gd php5-mcrypt`. Estas extensiones permiten a Magento manejar adecuadamente las peticiones HTTP, las imágenes en miniatura, y el cifrado de datos:
 
             sudo apt-get update
             sudo apt-get install libcurl3 php5-curl php5-gd php5-mcrypt
     
-    : Una vez hecho esto activaremos en Apache el módulo `rewrite` y en PHP el módulo `mcrypt` que nos permite encriptar. 
+    Una vez hecho esto activaremos en Apache el módulo `rewrite` y en PHP el módulo `mcrypt` que nos permite encriptar. 
     
             sudo a2enmod rewrite
             sudo php5enmod mcrypt
-    : Ya estamos listos para rearrancar el servicio apache.
+    Ya estamos listos para rearrancar el servicio apache.
     
             sudo service apache2 restart
 
 * MySQL
 
-    :  El último servicio que configuraremos en nuestra máquina será MySQL. Lo primero es entrar a MySQL con la cuenta de root:
+    El último servicio que configuraremos en nuestra máquina será MySQL. Lo primero es entrar a MySQL con la cuenta de root:
     
             mysql -u root -p
-    : Crearemos una nueva base de datos que en nuestro caso se llamará `magento`:
+    Crearemos una nueva base de datos que en nuestro caso se llamará `magento`:
     
             CREATE DATABASE magento;
-    : También debemos de crear un usuario y darle privilegios sobre nuestra base de datos. Ese usuario será el que usará Magento para conectarse con la base de datos.
+    También debemos de crear un usuario y darle privilegios sobre nuestra base de datos. Ese usuario será el que usará Magento para conectarse con la base de datos.
             
             CREATE USER magento_user@localhost IDENTIFIED BY 'password';
             GRANT ALL PRIVILEGES ON magento.* TO magento_user@localhost IDENTIFIED BY 'password';
-    : Para a asegurarnos de que nuestros cambios se actualizan en la base de datos recargaremos los privilegios manualmente y ya podremos salir de la base de datos:
+    Para a asegurarnos de que nuestros cambios se actualizan en la base de datos recargaremos los privilegios manualmente y ya podremos salir de la base de datos:
     
             FLUSH PRIVILEGES;
             exit
@@ -153,26 +153,40 @@ Para añadir o modificar categorías debemos de ir a PRODUCTS -> Categories.
 
 3. Cambiar tema:
 
-El estilo de nuestra página es totalmente modificable, no obstante existe la posibilidad de adaptar temas predefinidos por la comunidad:
+El estilo de nuestra página es totalmente modificable: 
+
+![](images/c18.png)
+
+Además, también existe la posibilidad de adaptar temas predefinidos por la comunidad:
+
+![](images/c19.png)
+
+
+4. Tipos de pagos:
+Magento ofrece la posibilidad de configurar todo tipo de pagos vie online. 
+En la siguiente imagen se comproeba lo facil que es configurar PayPal con esta herramienta:
+
+
+![](images/c17.png)
 
 
 ### 5. Problemas resueltos.
 * ¿Problemas para atentificarte como admin?
  
-    : Aconsejo no usar chrome como navegador al trabajar con Magento si lo hemos instalado en nuestro localhost. resulta que da problemas de autenticación debido a que detecta localhost como insegura y corta las peticiones que manda Magento.
+Aconsejo no usar chrome como navegador al trabajar con Magento si lo hemos instalado en nuestro localhost. resulta que da problemas de autenticación debido a que detecta localhost como insegura y corta las peticiones que manda Magento.
 
 * Error de caché:
 
 ![](images/c15.png)
 
-    : Este aviso significa que la caché necesita ser refrescada por algún cambio que hayamos hecho.
+Este aviso significa que la caché necesita ser refrescada por algún cambio que hayamos hecho.
 Es tan simple de solucionar como ir a SYSTEM-> Cache Management. Seleccionar el tipo de caché afectada y refrescarla.
 
 ![](images/c16.png)
 
 * No se cargan los productos en mi página principal!
 
-    : Este fallo puede deberse a un fallo en los índices de Magento. Se soluciona con ejecutar lo siguiente desde la raiz de nuestro proyecto magento:
+Este fallo puede deberse a un fallo en los índices de Magento. Se soluciona con ejecutar lo siguiente desde la raiz de nuestro proyecto magento:
 
             sudo php bin/magento indexer:reindex
 
